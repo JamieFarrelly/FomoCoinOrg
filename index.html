@@ -53,6 +53,8 @@
                <![endif]-->
                <!-- jQuery -->
                <script src="js/jquery.min.js"></script>
+               <!-- particles -->
+                <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
                <link rel="stylesheet" href="flipclock/flipclock.css">
                <script src="flipclock/flipclock.js"></script>
             </head>
@@ -78,17 +80,52 @@
                      <!-- </div> -->
                   </div>
                </header>
-               <section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.5">
+               
+               <section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.5" class="body-particles">
+               
+                  <!-- particles.js container -->
+                  <div id="particles-js"></div> 
                   <div class="gradient"></div>
-                  <div class="container">
+                  <div class="container" >
+                                                   
                      <div class="text-wrap">
                         <div class="text-inner">
                            <div class="row">
                               <div class="col-md-8 col-md-offset-2">
+                              
                                  <img src="FOMO-medium.png"/>
                                  <h1 class="to-animate">Don't get FOMO, get FOMO coin.</h1>
                                  <h2 class="to-animate">Yet another ICO is live, get in before it's too late!</h2>
-                                 <div class="message">THE ICO is now over :(</div>
+                                 <!-- countdown start -->
+                                 <div class="clock" style="margin:2em;"></div>
+                                 <div class="message"></div>
+                                 <script type="text/javascript">
+									
+                                    var endDate = new Date();
+                                    var now = new Date();
+                                    var diff = (endDate.getTime() / 1000 + 86400) - (now.getTime() / 1000); // a day countdown all the time, explained later that it's a fake countdown
+
+                                    
+                                    $(document).ready(function() {
+                                    	var clock;
+                                    
+                                    	clock = $('.clock').FlipClock({
+                                    		clockFace: 'DailyCounter',
+                                    		autoStart: false,
+                                    		callbacks: {
+                                    			stop: function() {
+                                    				$('.message').html('The ICO is over!')
+                                    			}
+                                    		}
+                                    	});
+                                    			
+                                    	clock.setTime(diff);
+                                    	clock.setCountdown(true);
+                                    	clock.start();
+                                    
+                                    });
+                                 </script>
+                                 <!-- countdown end -->
                               </div>
                            </div>
                         </div>
@@ -96,9 +133,10 @@
                   </div>
                   <div class="slant"></div>
                </section>
+
                <section id="fh5co-intro">
                   <div class="container">
-                     <div class="row row-bottom-padded-lg">
+                     <div class="row">
                         <div class="fh5co-block to-animate" style="background-image: url(images/img_7.jpg);">
                            <div class="overlay-darker"></div>
                            <div class="overlay"></div>
@@ -126,7 +164,7 @@
                            <div class="fh5co-text">
                               <i class="fh5co-intro-icon icon-rocket"></i>
                               <h2>Launched!</h2>
-                              <p>You can now send ether to 0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20 to get your FOMO coins right away. Yep, no waiting period like other ICOs, ain't nobody got time for that.</p>
+                              <p>You can now send ether to 0x1f1fc3a8459219ef935ff14c5edffd0921d478e7 to get your FOMO coins right away. Yep, no waiting period like other ICOs, ain't nobody got time for that.</p>
                               <br>
                            </div>
                         </div>
@@ -174,12 +212,12 @@
                                  <h3>By now you've wasted enough time reading about the great features of FOMO coin. You're more than likely close to giving us your private keys by now, so
                                     let's get to the important stuff.
                                  </h3>
-                                 <p>The FOMO ICO will end roughly 2 months from July 5th 2017 (at block #4300000) or whenever the ICO reaches it's target of 20,000 ether, because we've worked out through our very complex
+                                 <p>The FOMO ICO will end 24 hours after you visit the site (just kidding, that countdown is just to spread FOMO!) or we raise the target of 20,000 ether, because we've worked out through our very complex
                                     and thorough calculations that that's exactly how many ether we need to hire a junior developer straight out of college for a weeks work. A total of 20,000,000
                                     FOMO coins will be distributed if we reach the target (costing 0.0001 ether per FOMO coin). If the target is not met, we'll have to pay the junior developer in
                                     the remaining FOMO coins from the ICO, oops.
                                  </p>
-                                 <p>To participate, send ether to 0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20 (all good wallets will tell you how much gas to pay, minimum eth should be 0.001 for one FOMO coin) to the address above in order to receive FOMO.
+                                 <p>To participate, send ether to 0x1f1fc3a8459219ef935ff14c5edffd0921d478e7 (all good wallets will tell you how much gas to pay, minimum eth should be 0.001 for one FOMO coin) to the address above in order to receive FOMO.
                                     This crowdsale is a smart-contract, your FOMO tokens will automatically be linked to the ethereum address you send from. Don't send ether from an exchange,
                                     send from a wallet that you fully control - any wallet that supports ERC20 tokens will work with FOMO.
                                     But be quick, lots of people are FOMOing lately.
@@ -189,13 +227,15 @@
 								 
                                  <ul>
 									<li>Symbol: FOMO</li>
-									<li>Address: 0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20</li>
+									<li>Address: 0x1f1fc3a8459219ef935ff14c5edffd0921d478e7</li>
 									<li>Decimal places: 0</li>
 								 </ul>
-                                 <button class="btn btn-primary" data-clipboard-text="0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20">
-                                 Copy smart contract address (0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20) to clipboard
+                                 <button class="btn btn-primary" data-clipboard-text="0x1f1fc3a8459219ef935ff14c5edffd0921d478e7">
+                                 Copy smart contract address (0x1f1fc3a8459219ef935ff14c5edffd0921d478e7) to clipboard
                                  </button>
-                                 <p><a href="https://etherscan.io/address/0x6042d835ea6f5d4ebffe24b2d4be695350dc3b20" style="color:white" target="_blank">View transactions on etherscan</a></p>
+                                 <p><a href="https://etherscan.io/address/0x1f1fc3a8459219ef935ff14c5edffd0921d478e7" style="color:white" target="_blank">View transactions on etherscan</a></p>
+                                 
+                                 Join the discussion in <a href="http://discord.gg/MKdePNv" style="color:white">our FOMO discord<i class="icon-comment"></i></a>
                               </div>
                            </div>
                         </div>
@@ -294,6 +334,7 @@
                         <div class="col-md-12 text-center">
                            <ul class="social social-circle">
                               <li><a href="https://twitter.com/FomoCoinProject"><i class="icon-twitter"></i></a></li>
+                              <li><a href="http://discord.gg/MKdePNv"><i class="icon-comment"></i></a></li>
                            </ul>
                         </div>
                      </div>
